@@ -51,5 +51,10 @@ class Controller extends BaseController
         return view('register');
     }
 
+    public function konfirmasi()
+    {
+        return view('konfirmasi');
+    }
+
 
 }
