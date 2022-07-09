@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Controller::class, "index"]);
+Route::get('/cart', [Controller::class, "cart"]);
+Route::get('/checkout', [Controller::class, "checkout"]);
+Route::get('/contact', [Controller::class, "contact"]);
+Route::get('/detail', [Controller::class, "detail"]);
+Route::get('/shop', [Controller::class, "shop"]);
+Route::get('/login', [Controller::class, "login"]);
+Route::get('/register', [Controller::class, "register"]);
+
