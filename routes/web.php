@@ -54,8 +54,8 @@ Route::get('/checkout', [Controller::class, "checkout"]);
 Route::get('/contact', [Controller::class, "contact"]);
 Route::get('/detail', [Controller::class, "detail"]);
 Route::get('/shop', [Controller::class, "shop"]);
-Route::get('/register', [Controller::class, "login"]);
-Route::get('/login', [Controller::class, "register"]);
+Route::get('/register', [Controller::class, "register"]);
+Route::get('/login', [Controller::class, "login"]);
 Route::get('/konfirmasi', [Controller::class, "konfirmasi"]);
 
 
