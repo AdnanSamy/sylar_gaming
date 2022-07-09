@@ -67,10 +67,11 @@ class OrderController extends Controller
         try {
             $user = json_decode($req->session()->get('sessionUser'));
             $orderDetails = $req->orderDetails;
+            $currentTime = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
 
             DB::table('order')
                 ->insert([
-                    'tanggal_order' => new DateTime('now', new DateTimeZone('Asia/Jakarta')),
+                    'tanggal_order' => $currentTime->format('Y-m-d H:i:s'),
                     'status' => 'belum_lunas',
                     'user' => $user->id
                 ]);

@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\KonfirmasiController;
 use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -41,6 +42,8 @@ Route::get('/produk/{id}', [ProdukController:: class, 'get']);
 Route::post('/produk', [ProdukController::class, 'add']);
 Route::put('/produk', [ProdukController::class, 'update']);
 Route::delete('/produk', [ProdukController::class, 'add']);
+
+Route::post('/konfirmasi/{order_id}', [KonfirmasiController::class, 'add']);
 
 Route::get('/a', function() {
     return response(Storage::get('\public\a.jpg'))
