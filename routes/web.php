@@ -54,5 +54,6 @@ Route::get('/contact', [Controller::class, "contact"]);
 Route::get('/detail', [Controller::class, "detail"]);
 Route::get('/shop', [Controller::class, "shop"]);
 
+//php
 
 
