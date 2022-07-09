@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\Controller;
 use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
