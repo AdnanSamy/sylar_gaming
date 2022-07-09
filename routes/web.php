@@ -52,6 +52,8 @@ Route::get('/a', function() {
 });
 
 Route::get('/admin-produk', [AdminController::class, 'produk']);
+Route::get('/admin-produk/new', [AdminController::class, 'tambahProduk']);
+Route::get('/admin-produk/{id}', [AdminController::class, 'editProduk']);
 
 Route::get('/', [Controller::class, "index"]);
 Route::get('/cart', [Controller::class, "cart"]);

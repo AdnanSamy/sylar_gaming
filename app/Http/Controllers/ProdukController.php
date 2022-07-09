@@ -31,7 +31,9 @@ class ProdukController extends Controller
     public function getAll(Request $req)
     {
         try {
-            $products = DB::table('produk')
+            $products = DB::table('produk as p')
+                ->select('p.*', 'c.kategori')
+                ->leftJoin('categories as c', 'c.id', '=', 'p.categories_id')
                 ->get();
 
             return response([

@@ -46,7 +46,7 @@
         @include('admin.footer')
     </div>
 
-    <script src="{{ asset('js/admin/produk.js') }}"></script>
+    <script src="{{ asset('js/admin/produk/produk.js') }}"></script>
     @include('admin.scripts')
 </body>
 
