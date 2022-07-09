@@ -5,7 +5,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\KonfirmasiController;
-use Facade\FlareClient\Stacktrace\File;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,7 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user', [UserController:: class, 'getAll']);
+Route::post('/login-action', [UserController::class, 'loginUser']);
+Route::get('/user', [UserController::class, 'getAll']);
 Route::get('/user/{id}', [UserController:: class, 'get']);
 Route::post('/user', [UserController::class, 'add']);
 Route::put('/user', [UserController::class, 'update']);
@@ -50,6 +51,7 @@ Route::get('/a', function() {
     ->header('Content-Type', 'image/jpeg');;
 });
 
+Route::get('/admin-produk', [AdminController::class, 'produk']);
 
 Route::get('/', [Controller::class, "index"]);
 Route::get('/cart', [Controller::class, "cart"]);
@@ -60,8 +62,7 @@ Route::get('/shop', [Controller::class, "shop"]);
 Route::get('/register', [Controller::class, "register"]);
 Route::get('/login', [Controller::class, "login"]);
 Route::get('/konfirmasi', [Controller::class, "konfirmasi"]);
-
-
+Route::get('/admin', [Controller::class, 'admin']);
 
 //php
 

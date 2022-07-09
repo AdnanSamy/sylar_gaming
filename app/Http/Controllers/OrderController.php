@@ -94,6 +94,26 @@ class OrderController extends Controller
         }
     }
 
+    public function updateStatus(Request $req)
+    {
+        try {
+            DB::table('order')
+                ->where('id', $req->id)
+                ->insert([
+                    'status' => 'lunas',
+                ]);
+
+            return response([
+                'message' => 'success',
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response([
+                'message' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
     public function delete(Request $req)
     {
         try {

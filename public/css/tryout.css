@@ -1,0 +1,13 @@
+.nomor-container {
+    padding: 50px;
+    border: 4px #000 solid;
+    border-radius: 12px;
+}
+
+.waktu-tryout {
+    text-align: right;
+}
+
+.p-45 {
+    padding: 45px;
+}

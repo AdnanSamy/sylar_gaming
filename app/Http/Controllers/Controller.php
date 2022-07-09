@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -56,5 +54,12 @@ class Controller extends BaseController
         return view('konfirmasi');
     }
 
+    public function admin(Request $req)
+    {
+        $user = json_decode($req->session()->get('sessionUser'));
 
+        return view('admin.admin',[
+            'user' => $user,
+        ]);
+    }
 }

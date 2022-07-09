@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    @include('header_meta')ref="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" rel="stylesheet">
+@include('header_meta')
 </head>
 
 <body>
@@ -25,28 +25,34 @@
             <div class="col-lg-12">
                 <div class="mb-4">
                     <h4 class="font-weight-semi-bold mb-4">Login</h4>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Password</label>
-                            <input class="form-control" type="text" placeholder="*****">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Login</button>
+                    <form id="formLogin">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Username</label>
+                                <input class="form-control" type="text" id="username" name="username"
+                                    placeholder="example@email.com">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password" id="password" name="password" placeholder="*****">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <button class="btn btn-primary btn-block border-0 py-3"
+                                        type="submit">Login</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <!-- Checkout End -->
-
-
+    <script>
+        const _token = '{{ csrf_token() }}'
+    </script>
+    <script src="{{ asset('js/login.js') }}"></script>
     @include('footer')
 </body>
 

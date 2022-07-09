@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     //
-    public function login(Request $req)
+    public function loginUser(Request $req)
     {
         $username = $req->username;
         $password = $req->password;
@@ -27,8 +27,7 @@ class UserController extends Controller
         } else {
             return response([
                 'message' => 'User tidak ditemukan',
-                404,
-            ]);
+            ], 404);
         }
     }
 
