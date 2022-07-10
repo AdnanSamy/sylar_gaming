@@ -34,24 +34,34 @@ class KonfirmasiController extends Controller
     {
         DB::beginTransaction();
         try {
-            $currentTime = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
+            $order = DB::table('order')
+                ->where('id', $orderId)
+                ->get();
 
-            $filename = $orderId . $currentTime->format('Ymdhis') . '.' . $req->file('bukti')->extension();
+            if (count($order) > 0) {
+                $currentTime = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
 
-            Storage::put('\public\\' . $filename, file_get_contents($req->file('bukti')));
+                $filename = $orderId . $currentTime->format('Ymdhis') . '.' . $req->file('bukti')->extension();
 
-            DB::table('konfirmasi')
-                ->insert([
-                    'order_id' => $orderId,
-                    'tanggal' => $currentTime->format('Y-m-d H:i:s'),
-                    'bukti' => $filename,
+                Storage::put('\public\\' . $filename, file_get_contents($req->file('bukti')));
+
+                DB::table('konfirmasi')
+                    ->insert([
+                        'order_id' => $orderId,
+                        'tanggal' => $currentTime->format('Y-m-d H:i:s'),
+                        'bukti' => $filename,
+                    ]);
+
+                DB::commit();
+
+                return response([
+                    'message' => 'success',
                 ]);
-
-            DB::commit();
-
-            return response([
-                'message' => 'success',
-            ]);
+            }else {
+                return response([
+                    'message' => 'Order tidak ditemukan'
+                ], 404);
+            }
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;

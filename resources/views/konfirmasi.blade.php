@@ -27,18 +27,18 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label>Kode Order</label>
-                            <input class="form-control" type="text" placeholder="#0012">
+                            <input class="form-control" id="orderId" type="text" placeholder="#0012">
                         </div>
                         <div class="col-md-12 form-group">
                             <label>Upload Bukti Transfer</label>
-                            <input type="file" id="myFile" name="filename">
+                            <input type="file" id="gambar" name="filename">
                         </div>
                         {{-- <div class="col-md-12 form-group">
                             <input type="submit">
                         </div> --}}
                         <div class="col-md-12 form-group">
                             <div class="custom-control custom-checkbox">
-                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Konfirmasi</button>
+                                <button class="btn btn-primary btn-block border-0 py-3" id="konfirmasi" type="submit">Konfirmasi</button>
                             </div>
                         </div>
                     </div>
@@ -50,6 +50,10 @@
 
 
     @include('footer')
+    <script>
+        const _token = '{{ csrf_token() }}'
+    </script>
+    <script src="{{ asset('js/user/konfirmasi.js') }}"></script>
 </body>
 
 </html>

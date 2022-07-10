@@ -75,14 +75,14 @@ Route::get('/', [Controller::class, "index"]);
 Route::get('/cart', [Controller::class, "cart"]);
 Route::get('/checkout', [Controller::class, "checkout"]);
 Route::get('/contact', [Controller::class, "contact"]);
-Route::get('/detail', [Controller::class, "detail"]);
+Route::get('/detail/{id}', [Controller::class, "detail"]);
 Route::get('/shop/{categoriesId}', [Controller::class, "shop"]);
 Route::get('/register', [Controller::class, "register"]);
 Route::get('/login', [Controller::class, "login"]);
 Route::get('/konfirmasi', [Controller::class, "konfirmasi"]);
 Route::get('/profile', [Controller::class, "profile"]);
 Route::get('/history-detail', [Controller::class, "historyDetail"]);
-Route::get('/checkout-confirmation', [Controller::class, "checkoutConfirmation"]);
+Route::get('/checkout-confirmation/{id}', [Controller::class, "checkoutConfirmation"]);
 Route::get('/admin', [Controller::class, 'admin']);
 
 //php

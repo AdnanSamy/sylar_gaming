@@ -7,6 +7,10 @@ var app_param = {
     manual_submit: 2,
 }
 
+function sum(arr) {
+    return arr.reduce((partialSum, a) => partialSum + a, 0);
+}
+
 function getSummaryTryout(to_user_id) {
     $.ajax({
         url: '/get-summary-tryout',

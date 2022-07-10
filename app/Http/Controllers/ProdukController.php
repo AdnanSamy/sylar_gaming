@@ -16,6 +16,7 @@ class ProdukController extends Controller
     {
         try {
             $products = DB::table('produk as p')
+                ->select('p.*', 'c.kategori')
                 ->leftJoin('categories as c', 'c.id', '=', 'p.categories_id')
                 ->where('p.categories_id', $categoriesId)
                 ->where('nama', 'like', '%'.$req->keyword.'%')
@@ -67,7 +68,7 @@ class ProdukController extends Controller
                 ]);
             } else {
                 return response([
-                    'message' => 'Kategori tidak ditemukan',
+                    'message' => 'Produk tidak ditemukan',
                 ], 404);
             }
         } catch (\Throwable $th) {

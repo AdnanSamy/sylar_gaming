@@ -6,6 +6,7 @@ use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -33,6 +34,7 @@ class OrderController extends Controller
     {
         try {
             $orders = DB::table('order as o')
+                ->select('o.*', 'u.nama', 'u.telepon', 'u.alamat')
                 ->leftJoin('user as u', 'o.user_id', '=', 'u.id')
                 ->where('o.id', $id)
                 ->get();
@@ -77,35 +79,41 @@ class OrderController extends Controller
                 $o['orderId'] = $orderId;
 
                 $produk = DB::table('produk')
-                    ->where('id', $o['produk_id'])
+                    ->where('id', $o['id'])
                     ->get()
                     ->first();
 
-                $qty = $produk->qty - $o['qty'];
+                $stok = $produk->stok - $o['qty'];
 
                 DB::table('produk')
-                    ->where('id', $o['produk_id'])
+                    ->where('id', $o['id'])
                     ->update([
-                        'qty' => $qty,
+                        'stok' => $stok,
+                    ]);
+
+                DB::table('order_detail')
+                    ->insert([
+                        'order_id' => $orderId,
+                        'produk_id' => $o['id'],
+                        'qty' => $o['qty'],
+                        'total' => $o['total'],
                     ]);
             }
 
             DB::table('order')
                 ->insert([
-                    'orderId' => $orderId,
+                    'id' => $orderId,
                     'tanggal_order' => $currentTime->format('Y-m-d H:i:s'),
                     'status' => 'belum_lunas',
-                    'user' => $user->id,
+                    'user_id' => $user->id,
                     'total' => $req->total,
-                ]);
-
-            DB::table('order_detail')
-                ->insert([
-                    $orderDetails,
                 ]);
 
             DB::commit();
             return response([
+                'data' => [
+                    'id' => $orderId
+                ],
                 'message' => 'success',
             ]);
         } catch (\Throwable $th) {
@@ -174,7 +182,8 @@ class OrderController extends Controller
         ]);
     }
 
-    public function orderBukti(Request $req, $id){
+    public function orderBukti(Request $req, $id)
+    {
         $user = json_decode($req->session()->get('sessionUser'));
 
         return view('admin.order.bukti', [

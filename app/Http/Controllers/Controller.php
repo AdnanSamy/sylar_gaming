@@ -29,9 +29,11 @@ class Controller extends BaseController
         return view('contact');
     }
 
-    public function detail()
+    public function detail(Request $req, $id)
     {
-        return view('detail');
+        return view('detail', [
+            'id' => $id,
+        ]);
     }
 
     public function shop(Request $req, $categoriesId)
@@ -67,16 +69,18 @@ class Controller extends BaseController
         return view('history_detail');
     }
 
-    public function checkoutConfirmation()
+    public function checkoutConfirmation(Request $req, $id)
     {
-        return view('checkout_confirmation');
+        return view('checkout_confirmation', [
+            'id' => $id,
+        ]);
     }
 
     public function admin(Request $req)
     {
         $user = json_decode($req->session()->get('sessionUser'));
 
-        return view('admin.admin',[
+        return view('admin.admin', [
             'user' => $user,
         ]);
     }
