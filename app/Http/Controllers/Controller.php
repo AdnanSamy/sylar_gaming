@@ -34,9 +34,12 @@ class Controller extends BaseController
         return view('detail');
     }
 
-    public function shop()
+    public function shop(Request $req, $categoriesId)
     {
-        return view('shop');
+
+        return view('shop', [
+            'categoriesId' => $categoriesId,
+        ]);
     }
 
     public function login()

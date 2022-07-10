@@ -18,6 +18,7 @@ class ProdukController extends Controller
             $products = DB::table('produk as p')
                 ->leftJoin('categories as c', 'c.id', '=', 'p.categories_id')
                 ->where('p.categories_id', $categoriesId)
+                ->where('nama', 'like', '%'.$req->keyword.'%')
                 ->get();
 
             return response([

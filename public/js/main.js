@@ -1,25 +1,3 @@
-const categories = document.querySelector('#categories')
-
-document.addEventListener('DOMContentLoaded', function () {
-    $.ajax({
-        url: '/kategori',
-        type: 'get',
-        success: function (res) {
-            res.data.forEach((p, i) => {
-                let html = `
-                    <a href="" class="nav-item nav-link">${p.kategori}</a>
-                `
-                categories.innerHTML += html
-            })
-        },
-        error: function (res) {
-            const resp = res.responseJSON
-            alert(resp.message)
-        }
-    })
-})
-
-
     (function ($) {
         "use strict";
         // Dropdown on mouse hover
