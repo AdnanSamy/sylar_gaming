@@ -54,6 +54,11 @@ class Controller extends BaseController
         return view('konfirmasi');
     }
 
+    public function profile()
+    {
+        return view('profile');
+    }
+
     public function admin(Request $req)
     {
         $user = json_decode($req->session()->get('sessionUser'));

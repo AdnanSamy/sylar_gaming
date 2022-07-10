@@ -64,6 +64,7 @@ Route::get('/shop', [Controller::class, "shop"]);
 Route::get('/register', [Controller::class, "register"]);
 Route::get('/login', [Controller::class, "login"]);
 Route::get('/konfirmasi', [Controller::class, "konfirmasi"]);
+Route::get('/profile', [Controller::class, "profile"]);
 Route::get('/admin', [Controller::class, 'admin']);
 
 //php
