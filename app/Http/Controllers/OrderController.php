@@ -12,7 +12,9 @@ class OrderController extends Controller
     public function getAll(Request $req)
     {
         try {
-            $orders = DB::table('order')
+            $orders = DB::table('order as o')
+                ->select('o.*', 'u.username', 'u.nama as pembeli', 'u.telepon', 'u.alamat')
+                ->leftJoin('user as u', 'o.user_id', '=', 'u.id')
                 ->get();
 
             return response([
@@ -69,16 +71,37 @@ class OrderController extends Controller
             $orderDetails = $req->orderDetails;
             $currentTime = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
 
+            $orderId = $currentTime->format('Ymdhis');
+
+            foreach ($orderDetails as $o) {
+                $o['orderId'] = $orderId;
+
+                $produk = DB::table('produk')
+                    ->where('id', $o['produk_id'])
+                    ->get()
+                    ->first();
+
+                $qty = $produk->qty - $o['qty'];
+
+                DB::table('produk')
+                    ->where('id', $o['produk_id'])
+                    ->update([
+                        'qty' => $qty,
+                    ]);
+            }
+
             DB::table('order')
                 ->insert([
+                    'orderId' => $orderId,
                     'tanggal_order' => $currentTime->format('Y-m-d H:i:s'),
                     'status' => 'belum_lunas',
-                    'user' => $user->id
+                    'user' => $user->id,
+                    'total' => $req->total,
                 ]);
 
             DB::table('order_detail')
                 ->insert([
-                    $orderDetails
+                    $orderDetails,
                 ]);
 
             DB::commit();
@@ -130,5 +153,33 @@ class OrderController extends Controller
                 'message' => $th->getMessage(),
             ], 500);
         }
+    }
+
+    public function order(Request $req)
+    {
+        $user = json_decode($req->session()->get('sessionUser'));
+
+        return view('admin.order.index', [
+            'user' => $user,
+        ]);
+    }
+
+    public function orderDetail(Request $req, $id)
+    {
+        $user = json_decode($req->session()->get('sessionUser'));
+
+        return view('admin.order.detail', [
+            'user' => $user,
+            'id' => $id,
+        ]);
+    }
+
+    public function orderBukti(Request $req, $id){
+        $user = json_decode($req->session()->get('sessionUser'));
+
+        return view('admin.order.bukti', [
+            'user' => $user,
+            'id' => $id,
+        ]);
     }
 }

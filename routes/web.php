@@ -6,6 +6,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\KonfirmasiController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,6 +38,12 @@ Route::post('/kategori', [KategoriController::class, 'add']);
 Route::put('/kategori', [KategoriController::class, 'update']);
 Route::delete('/kategori', [KategoriController::class, 'delete']);
 
+Route::get('/order', [OrderController:: class, 'getAll']);
+Route::get('/order/{id}', [OrderController:: class, 'get']);
+Route::post('/order', [OrderController::class, 'add']);
+Route::put('/order/update-status', [OrderController::class, 'updateStatus']);
+Route::delete('/order', [OrderController::class, 'delete']);
+
 Route::get('/produk', [ProdukController:: class, 'getByCategories']);
 Route::get('/produk', [ProdukController:: class, 'getAll']);
 Route::get('/produk/{id}', [ProdukController:: class, 'get']);
@@ -45,6 +52,7 @@ Route::post('/produk/update', [ProdukController::class, 'update']);
 Route::delete('/produk', [ProdukController::class, 'delete']);
 
 Route::post('/konfirmasi/{order_id}', [KonfirmasiController::class, 'add']);
+Route::get('/konfirmasi/by-order/{order_id}', [KonfirmasiController::class, 'getByOrder']);
 
 Route::get('/files/{file}', function($file) {
     return response(Storage::get('\public\\' . $file))
@@ -58,6 +66,10 @@ Route::get('/admin-produk/{id}', [AdminController::class, 'editProduk']);
 Route::get('/admin-kategori', [KategoriController::class, 'kategori']);
 Route::get('/admin-kategori/new', [KategoriController::class, 'newView']);
 Route::get('/admin-kategori/{id}', [KategoriController::class, 'editView']);
+
+Route::get('/admin-order', [OrderController::class, 'order']);
+Route::get('/admin-order/{id}', [OrderController::class, 'orderDetail']);
+Route::get('/admin-order/bukti/{id}', [OrderController::class, 'orderBukti']);
 
 Route::get('/', [Controller::class, "index"]);
 Route::get('/cart', [Controller::class, "cart"]);

@@ -10,6 +10,26 @@ use Illuminate\Support\Facades\Storage;
 
 class KonfirmasiController extends Controller
 {
+
+    public function getByOrder(Request $req, $orderId)
+    {
+        try {
+            $konfirmasi = DB::table('konfirmasi')
+                ->where('order_id', $orderId)
+                ->get();
+
+            return response([
+                'message' => 'success',
+                'data' => $konfirmasi,
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response([
+                'message' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
     public function add(Request $req, $orderId)
     {
         DB::beginTransaction();
