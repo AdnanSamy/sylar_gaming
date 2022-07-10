@@ -59,6 +59,16 @@ class Controller extends BaseController
         return view('profile');
     }
 
+    public function historyDetail()
+    {
+        return view('history_detail');
+    }
+
+    public function checkoutConfirmation()
+    {
+        return view('checkout_confirmation');
+    }
+
     public function admin(Request $req)
     {
         $user = json_decode($req->session()->get('sessionUser'));

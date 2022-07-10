@@ -69,6 +69,8 @@ Route::get('/register', [Controller::class, "register"]);
 Route::get('/login', [Controller::class, "login"]);
 Route::get('/konfirmasi', [Controller::class, "konfirmasi"]);
 Route::get('/profile', [Controller::class, "profile"]);
+Route::get('/history-detail', [Controller::class, "historyDetail"]);
+Route::get('/checkout-confirmation', [Controller::class, "checkoutConfirmation"]);
 Route::get('/admin', [Controller::class, 'admin']);
 
 //php
