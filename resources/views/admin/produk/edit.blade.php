@@ -30,6 +30,12 @@
                                     <input type="text" class="form-control" id="nama">
                                 </div>
                                 <div class="col-md-3 mt-2">
+                                    <label for="gambar">Gambar</label>
+                                </div>
+                                <div class="col-md-9 mt-2">
+                                    <input type="file" accept="image/jpeg" class="form-control" id="gambar">
+                                </div>
+                                <div class="col-md-3 mt-2">
                                     <label for="kategori">Kategori</label>
                                 </div>
                                 <div class="col-md-9 mt-2">
@@ -58,6 +64,9 @@
                                     <input type="number" class="form-control" id="stok">
                                 </div>
                             </div>
+                            <div class="row mt-5">
+                                <button id="save" class="btn btn-primary admin-bg ml-auto">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,11 +80,12 @@
         @include('admin.footer')
     </div>
 
+    @include('admin.scripts')
     <script>
         const id = '{{ $id }}'
+        const _token = '{{ csrf_token() }}'
     </script>
     <script src="{{ asset('js/admin/produk/edit.js') }}"></script>
-    @include('admin.scripts')
 </body>
 
 </html>

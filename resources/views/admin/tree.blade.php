@@ -43,6 +43,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="/admin-kategori" class="nav-link text-white">
+                        <i class="fas fa-images"></i>
+                        <p>Kategori Produk</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="/logout-admin" class="nav-link text-white">
                         <i class="fas fa-sign-out"></i>
                         <p>Log Out</p>

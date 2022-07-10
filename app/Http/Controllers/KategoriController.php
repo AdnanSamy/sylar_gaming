@@ -55,7 +55,7 @@ class KategoriController extends Controller
         try {
             DB::table('categories')
                 ->insert([
-                    'nama' => $req->nama,
+                    'kategori' => $req->kategori,
                 ]);
 
             return response([
@@ -75,7 +75,7 @@ class KategoriController extends Controller
             DB::table('categories')
                 ->where('id', $req->id)
                 ->update([
-                    'nama' => $req->nama,
+                    'kategori' => $req->kategori,
                 ]);
 
             return response([
@@ -105,5 +105,33 @@ class KategoriController extends Controller
                 'message' => $th->getMessage(),
             ], 500);
         }
+    }
+
+    public function kategori(Request $req)
+    {
+        $user = json_decode($req->session()->get('sessionUser'));
+
+        return view('admin.kategori.index', [
+            'user' => $user,
+        ]);
+    }
+
+    public function newView(Request $req)
+    {
+        $user = json_decode($req->session()->get('sessionUser'));
+
+        return view('admin.kategori.tambah', [
+            'user' => $user,
+        ]);
+    }
+
+    public function editView(Request $req, $id)
+    {
+        $user = json_decode($req->session()->get('sessionUser'));
+
+        return view('admin.kategori.edit', [
+            'user' => $user,
+            'id' => $id,
+        ]);
     }
 }

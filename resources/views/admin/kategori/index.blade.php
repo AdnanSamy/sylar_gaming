@@ -21,18 +21,13 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <a href="/admin-produk/new" class="btn btn-primary ml-auto">+</a>
+                        <a href="/admin-kategori/new" class="btn btn-primary admin-bg ml-auto">+</a>
                     </div>
-                    <table class="table table-bordered" id="tableProduct">
+                    <table class="table table-bordered" id="table">
                         <thead class="admin-bg text-white">
                             <tr>
-                                <th>No</th>
-                                <th>Nama Produk</th>
+                                <th style="width: 10%">No</th>
                                 <th>Kategori</th>
-                                <th>Deskripsi</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
-                                <th>Views</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -53,7 +48,7 @@
     <script>
         const _token = '{{ csrf_token() }}'
     </script>
-    <script src="{{ asset('js/admin/produk/index.js') }}"></script>
+    <script src="{{ asset('js/admin/kategori/index.js') }}"></script>
 </body>
 
 </html>

@@ -19,27 +19,24 @@
                 </div>
             </div>
             <section class="content">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <a href="/admin-produk/new" class="btn btn-primary ml-auto">+</a>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <label for="kategori" class="m-2">Kategori</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="kategori">
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <button id="save" class="btn btn-primary admin-bg ml-auto">Save</button>
+                            </div>
+                        </div>
                     </div>
-                    <table class="table table-bordered" id="tableProduct">
-                        <thead class="admin-bg text-white">
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Produk</th>
-                                <th>Kategori</th>
-                                <th>Deskripsi</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
-                                <th>Views</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
                 </div>
+
             </section>
         </div>
 
@@ -53,7 +50,7 @@
     <script>
         const _token = '{{ csrf_token() }}'
     </script>
-    <script src="{{ asset('js/admin/produk/index.js') }}"></script>
+    <script src="{{ asset('js/admin/kategori/tambah.js') }}"></script>
 </body>
 
 </html>

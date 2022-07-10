@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Uuid;
 
 class ProdukController extends Controller
 {
@@ -76,14 +80,19 @@ class ProdukController extends Controller
     public function add(Request $req)
     {
         try {
+            $file = $req->file('gambar');
+            $filename = str_replace('-', '_', Uuid::uuid4()->toString()) . '.' . $file->extension();
+
+            Storage::put('\public\\' . $filename, file_get_contents($file));
+
             DB::table('produk')
                 ->insert([
                     'categories_id' => $req->categories_id,
                     'nama' => $req->nama,
+                    'gambar' => $filename,
                     'deskripsi' => $req->deskripsi,
                     'harga' => $req->harga,
                     'stok' => $req->stok,
-                    'views' => $req->views,
                 ]);
 
             return response([
@@ -100,20 +109,39 @@ class ProdukController extends Controller
     public function update(Request $req)
     {
         try {
-            DB::table('produk')
-                ->where('id', $req->id)
-                ->update([
-                    'categories_id' => $req->categories_id,
-                    'nama' => $req->nama,
-                    'deskripsi' => $req->deskripsi,
-                    'harga' => $req->harga,
-                    'stok' => $req->stok,
-                    'views' => $req->views,
-                ]);
+            if ($req->gambar != 'undefined') {
+                $item = DB::table('produk')
+                    ->where('id', $req->id)
+                    ->get()
+                    ->first();
 
-            return response([
-                'message' => 'success',
-            ]);
+                Storage::delete('\public\\' . $item->gambar);
+
+                $file = $req->file('gambar');
+                $filename = str_replace('-', '_', Uuid::uuid4()->toString()) . '.' . $file->extension();
+
+                Storage::put('\public\\' . $filename, file_get_contents($file));
+
+                DB::table('produk')
+                    ->where('id', $req->id)
+                    ->update([
+                        'categories_id' => $req->categories_id,
+                        'nama' => $req->nama,
+                        'gambar' => $filename,
+                        'deskripsi' => $req->deskripsi,
+                        'harga' => $req->harga,
+                        'stok' => $req->stok,
+                    ]);
+
+                return response([
+                    'message' => 'success',
+                ]);
+            } else {
+                return response([
+                    'message' => 'Gambar harus diinput',
+                ], 400);
+            }
+
         } catch (\Throwable $th) {
             throw $th;
             return response([

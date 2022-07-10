@@ -1,6 +1,24 @@
 const tableProduct = document.querySelector('#tableProduct')
 const tbody = tableProduct.querySelector('tbody')
 
+function handleDelete(id){
+    $.ajax({
+        url:'/produk',
+        type:'delete',
+        data:{
+            _token,
+            id,
+        },
+        success:function(res){
+            location.reload()
+        },
+        error: function(res){
+            const resp = res.responseJSON
+            alert(resp)
+        }
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     $('#tableProduct').DataTable()
     $.ajax({
@@ -21,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${p.views}</td>
                     <td>
                         <a href="/admin-produk/${p.id}" class="btn btn-warning">Edit</a>
-                        <button class="btn btn-danger">Delete</button>
+                        <button onclick="handleDelete(${p.id})" class="btn btn-danger">Delete</button>
                     </td>
                 `
 
