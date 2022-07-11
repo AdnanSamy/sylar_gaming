@@ -44,11 +44,12 @@ function getProduk() {
                 let html = `
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="img-fluid w-100" src="${location.origin}/files/${d.gambar}" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">${d.nama}</h6>
                             <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>Rp. ${d.harga.toLocaleString()}</del></h6>
+                                <h6>Rp. ${d.harga.toLocaleString()}</h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
@@ -59,27 +60,27 @@ function getProduk() {
                `
 
                 products.innerHTML += html
-                // $('.related-carousel').owlCarousel({
-                //     loop: true,
-                //     margin: 29,
-                //     nav: false,
-                //     autoplay: true,
-                //     smartSpeed: 1000,
-                //     responsive: {
-                //         0: {
-                //             items: 1
-                //         },
-                //         576: {
-                //             items: 2
-                //         },
-                //         768: {
-                //             items: 3
-                //         },
-                //         992: {
-                //             items: 4
-                //         }
-                //     }
-                // });
+            });
+            $('.related-carousel').owlCarousel({
+                loop: true,
+                margin: 29,
+                nav: false,
+                autoplay: true,
+                smartSpeed: 1000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 4
+                    }
+                }
             });
         },
         error: function (res) {

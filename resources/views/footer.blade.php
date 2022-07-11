@@ -56,4 +56,3 @@
 <script src="{{ asset('plugins/easing/easing.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/utility.js') }}"></script>
-<script src="{{ asset('js/user/index.js') }}"></script>

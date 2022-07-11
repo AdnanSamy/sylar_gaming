@@ -19,7 +19,7 @@ class ProdukController extends Controller
                 ->select('p.*', 'c.kategori')
                 ->leftJoin('categories as c', 'c.id', '=', 'p.categories_id')
                 ->where('p.categories_id', $categoriesId)
-                ->where('nama', 'like', '%'.$req->keyword.'%')
+                ->where('p.nama', 'like', '%'.$req->keyword.'%')
                 ->get();
 
             return response([
@@ -62,6 +62,8 @@ class ProdukController extends Controller
             $products = DB::table('produk as p')
                 ->select('p.*', 'c.kategori')
                 ->leftJoin('categories as c', 'c.id', '=', 'p.categories_id')
+                ->where('p.nama', 'like', '%'.$req->keyword.'%')
+                ->orderBy('p.id', 'desc')
                 ->get();
 
             return response([
