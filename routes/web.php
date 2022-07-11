@@ -39,6 +39,7 @@ Route::put('/kategori', [KategoriController::class, 'update']);
 Route::delete('/kategori', [KategoriController::class, 'delete']);
 
 Route::get('/order', [OrderController:: class, 'getAll']);
+Route::get('/order/user', [OrderController:: class, 'getByUser']);
 Route::get('/order/{id}', [OrderController:: class, 'get']);
 Route::post('/order', [OrderController::class, 'add']);
 Route::put('/order/update-status', [OrderController::class, 'updateStatus']);

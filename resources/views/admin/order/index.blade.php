@@ -13,7 +13,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Produk</h1>
+                            <h1 class="m-0 text-dark">Order</h1>
                         </div>
                     </div>
                 </div>
@@ -31,6 +31,7 @@
                                 <th>Pembeli</th>
                                 <th>Alamat</th>
                                 <th>Telepon</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

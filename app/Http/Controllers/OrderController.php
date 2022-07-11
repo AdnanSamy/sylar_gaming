@@ -10,6 +10,30 @@ use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
+
+    public function getByUser(Request $req)
+    {
+        try {
+            $user = json_decode($req->session()->get('sessionUser'));
+
+            $orders = DB::table('order as o')
+                ->leftJoin('user as u', 'o.user_id', '=', 'u.id')
+                ->where('o.user_id', $user->id)
+                ->select('o.*', 'u.username', 'u.nama as pembeli', 'u.telepon', 'u.alamat')
+                ->get();
+
+            return response([
+                'message' => 'success',
+                'data' => $orders,
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response([
+                'message' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
     public function getAll(Request $req)
     {
         try {
@@ -130,7 +154,7 @@ class OrderController extends Controller
         try {
             DB::table('order')
                 ->where('id', $req->id)
-                ->insert([
+                ->update([
                     'status' => 'lunas',
                 ]);
 
