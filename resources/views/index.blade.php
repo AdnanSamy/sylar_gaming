@@ -216,8 +216,7 @@
         </div>
     </div>
     <!-- Vendor End -->
-
-
+    
     @include('footer')
     <script src="{{ asset('js/user/index.js') }}"></script>
 </body>

@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Admin Taruna Tryout</title>
+    <title>Admin Sylar Gaming</title>
     <link rel="icon" type="image/png" href="{{ asset('img/Taruna.ico') }}">
 
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
