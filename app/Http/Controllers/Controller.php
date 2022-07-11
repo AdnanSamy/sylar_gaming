@@ -49,6 +49,11 @@ class Controller extends BaseController
         return view('login');
     }
 
+    public function shopAll()
+    {
+        return view('shop_all');
+    }
+
     public function register()
     {
         return view('register');

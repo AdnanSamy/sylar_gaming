@@ -78,6 +78,7 @@ Route::get('/checkout', [Controller::class, "checkout"]);
 Route::get('/contact', [Controller::class, "contact"]);
 Route::get('/detail/{id}', [Controller::class, "detail"]);
 Route::get('/shop/{categoriesId}', [Controller::class, "shop"]);
+Route::get('/shop-all', [Controller::class, "shopAll"]);
 Route::get('/register', [Controller::class, "register"]);
 Route::get('/login', [Controller::class, "login"]);
 Route::get('/konfirmasi', [Controller::class, "konfirmasi"]);
