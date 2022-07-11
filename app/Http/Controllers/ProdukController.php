@@ -34,6 +34,28 @@ class ProdukController extends Controller
         }
     }
 
+    public function getTop4(Request $req)
+    {
+        try {
+            $products = DB::table('produk as p')
+                ->select('p.*', 'c.kategori')
+                ->leftJoin('categories as c', 'c.id', '=', 'p.categories_id')
+                ->limit(4)
+                ->orderBy('p.id', 'desc')
+                ->get();
+
+            return response([
+                'message' => 'success',
+                'data' => $products,
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response([
+                'message' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
     public function getAll(Request $req)
     {
         try {

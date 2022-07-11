@@ -15,6 +15,7 @@ formLogin.onsubmit = function(e){
         success:function(res){
             console.log(res);
             location.href = '/'
+            localStorage.setItem('cart', JSON.stringify([]))
         },
         error: function(err){
             const resp = err.responseJSON

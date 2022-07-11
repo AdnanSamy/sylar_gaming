@@ -47,6 +47,7 @@ Route::delete('/order', [OrderController::class, 'delete']);
 
 Route::get('/produk/by-categories/{categoriesId}', [ProdukController:: class, 'getByCategories']);
 Route::get('/produk', [ProdukController:: class, 'getAll']);
+Route::get('/produk/top', [ProdukController::class, 'getTop4']);
 Route::get('/produk/{id}', [ProdukController:: class, 'get']);
 Route::post('/produk', [ProdukController::class, 'add']);
 Route::post('/produk/update', [ProdukController::class, 'update']);
