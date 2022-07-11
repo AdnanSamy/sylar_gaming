@@ -1,8 +1,11 @@
 const table = document.querySelector('#table')
 const tbody = table.querySelector('tbody')
+const modalBukti = document.querySelector('#modalBukti')
+const imgBukti = document.querySelector('#imgBukti')
 
-function showBukti(url){
-
+function showBukti(bukti){
+    imgBukti.src = `${location.origin}/files/${bukti}`
+    $('#modalBukti').modal('show')
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -20,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${i+1}</td>
                     <td>${p.tanggal}</td>
                     <td>
-                        <button onclick="showBukti(${p.id})" class="btn btn-danger">Bukti</button>
+                        <button onclick="showBukti('${p.bukti}')" class="btn btn-danger">Bukti</button>
                     </td>
                 `
 
