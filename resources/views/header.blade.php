@@ -98,7 +98,12 @@
                         <a href="/konfirmasi" class="nav-item nav-link">Konfirmasi Order</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="/login" class="nav-item nav-link">Login</a>
+                        @if ($user == null)
+                            <a href="/login" class="nav-item nav-link">Login</a>
+                        @else
+                            <a href="/logout" class="nav-item nav-link">Logout</a>
+                        @endif
+
                         <a href="/register" class="nav-item nav-link">Register</a>
                     </div>
                 </div>

@@ -14,8 +14,12 @@ formLogin.onsubmit = function(e){
         },
         success:function(res){
             console.log(res);
-            location.href = '/'
             localStorage.setItem('cart', JSON.stringify([]))
+            if (res.data.role === 'admin') {
+                location.href = '/admin'
+            }else{
+                location.href = '/'
+            }
         },
         error: function(err){
             const resp = err.responseJSON

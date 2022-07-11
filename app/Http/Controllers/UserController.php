@@ -23,6 +23,9 @@ class UserController extends Controller
             $req->session()->put('sessionUser', json_encode($selUser));
             return response([
                 'message' => 'success',
+                'data' => [
+                    'role' => $selUser->role
+                ]
             ]);
         } else {
             return response([
@@ -77,19 +80,29 @@ class UserController extends Controller
     public function add(Request $req)
     {
         try {
-            DB::table('user')
-                ->insert([
-                    'username' => $req->username,
-                    'nama' => $req->nama,
-                    'password' => $req->password,
-                    'telepon' => $req->telepon,
-                    'alamat' => $req->alamat,
-                    'role' => $req->role,
-                ]);
+            $exist = DB::table('user')
+                ->where('username', $req->username)
+                ->get();
 
-            return response([
-                'message' => 'success',
-            ]);
+            if (count($exist) == 0) {
+                DB::table('user')
+                    ->insert([
+                        'username' => $req->username,
+                        'nama' => $req->nama,
+                        'password' => $req->password,
+                        'telepon' => $req->telepon,
+                        'alamat' => $req->alamat,
+                        'role' => 'user',
+                    ]);
+
+                return response([
+                    'message' => 'success',
+                ]);
+            }else {
+                return response([
+                    'message' => 'Email sudah dipakai'
+                ], 400);
+            }
         } catch (\Throwable $th) {
             throw $th;
             return response([

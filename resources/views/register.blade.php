@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    @include('header_meta')
+@include('header_meta')
 
 <body>
 
@@ -24,33 +24,37 @@
             <div class="col-lg-12">
                 <div class="mb-4">
                     <h4 class="font-weight-semi-bold mb-4">Register</h4>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Name</label>
-                            <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Password</label>
-                            <input class="form-control" type="text" placeholder="*****">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Mobile No</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Register Account</button>
+                    <form id="register">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Name</label>
+                                <input class="form-control" id="nama" type="text" placeholder="John">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>E-mail</label>
+                                <input class="form-control" id="username" type="text"
+                                    placeholder="example@email.com">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Password</label>
+                                <input class="form-control" id="password" type="password" placeholder="*****">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Mobile No</label>
+                                <input class="form-control" id="telepon" type="text" placeholder="+123 456 789">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Address</label>
+                                <input class="form-control" id="alamat" type="text" placeholder="123 Street">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <button class="btn btn-primary btn-block border-0 py-3" type="submit">Register
+                                        Account</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -58,7 +62,11 @@
     <!-- Checkout End -->
 
 
-    <@include('footer')
+    @include('footer')
+    <script>
+        const _token = '{{ csrf_token() }}'
+    </script>
+    <script src="{{ asset('js/register.js') }}"></script>
 </body>
 
 </html>
