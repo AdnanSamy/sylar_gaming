@@ -12,7 +12,7 @@
 <aside class="main-sidebar sidebar-dark-primary admin-bg elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link text-center">
-        <span class="brand-text font-weight-light text-white">Admin Taruna Tryout</span>
+        <span class="brand-text font-weight-light text-white">Admin Sylar Gaming</span>
     </a>
 
     <!-- Sidebar -->

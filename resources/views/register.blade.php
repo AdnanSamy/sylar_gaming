@@ -26,12 +26,8 @@
                     <h4 class="font-weight-semi-bold mb-4">Register</h4>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <label>First Name</label>
+                            <label>Name</label>
                             <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" type="text" placeholder="Doe">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
@@ -46,33 +42,8 @@
                             <input class="form-control" type="text" placeholder="+123 456 789">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Address Line 1</label>
+                            <label>Address</label>
                             <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address Line 2</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Country</label>
-                            <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>City</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>State</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123">
                         </div>
                         <div class="col-md-12 form-group">
                             <div class="custom-control custom-checkbox">
